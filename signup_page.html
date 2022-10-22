@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            background-image: url("https://kinsta.com/wp-content/uploads/2019/08/jpg-vs-jpeg.jpg");
+            font-family: 'Times New Roman', Times, serif;
+            /* background-repeat: no-repeat; */
+            
+        }
+
+        .login {
+            width: 500px;
+            height: 600px;
+            margin: auto;
+            padding: 10px;
+            font-family: 'Times New Roman', Times, serif;
+            background: rgb(184, 183, 194,0.6);
+            outline-width: 3px;
+            outline-style: solid;
+            outline-color: red;
+            
+
+        }
+
+        h2 {
+            text-align: center;
+            padding: auto;
+            color: rgb(211, 58, 58);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 30px;
+        }
+
+        label {
+            font-size: 20px;
+        }
+
+        .inputs {
+            margin-left: 210px;
+            border: none;
+            border-bottom: 4px solid rgb(211, 58, 58);
+            width: 250px;
+            height: 30px;
+            background-color: transparent;
+        }
+
+        .btn {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 30px;
+            background-color:  rgb(211, 58, 58);
+            /* border: solid black; */
+            border-radius: 10px;
+        }
+        .btn:hover
+        {
+            background-color: rgb(31, 182, 94);
+        }
+
+        .bx{
+            margin: 10px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+        }
+
+        .txt {
+            color: rgb(211, 58, 58);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Sign-Up Page</h2><br>
+    <div class="login">
+        <form action="">
+            <label><b>User Name</b></label>
+            <input class="inputs" ; id="un" type="text" placeholder="Username" onblur="hide()"><br><br>
+            <label><b>Password</b></label>
+            <input class="inputs" ; id="pw" type="text" placeholder="Password" onblur="show()"><br><br>
+            <label><b>Re-Enter Password</b></label>
+            <input class="inputs" ; id="pw1" type="text" placeholder="Re-Enter Password" onblur="show1()";><br><br>
+            <label><b>Contact Number</b></label>
+            <input class="inputs" ; id="con" type="text" placeholder="Contact Number" onblur="con1()"><br><br>
+            <label><b>Email ID</b></label>  
+            <input class="inputs" ; id="email" type="text" placeholder="Email-ID" onblur="emil_val()"><br><br>
+            <label><b>DOB</b></label>
+            <input class="inputs" ; id="dob" type="date"><br><br>
+            <label><b>Gender</b></label>
+            <input class="bx" ; id="gen" name="gen" type="radio"><b class="txt">Male</b><input name="gen"; class="bx" id="gen"
+                type="radio"> <b class="txt">Female</b><br><br>
+                <span id="err" style="color:rgb(211, 58, 58);font-size: 20px;font-weight: 800;"></span><br><br>
+            <button class="btn" id="b1" type="button">Login</button><br><br>
+        </form>
+    </div>
+    <script>
+        function hide() {
+            var u = document.getElementById('un').value;
+            var uexp = /[a-zA-Z]{4,7}[0-9]+/
+            if (u == "") {
+                document.getElementById('err').innerHTML = "Please enter username"
+            }
+            else if (!u.match(uexp)) {
+                document.getElementById('err').innerHTML="User name must be 4 to 7 chracter and last chracter is Numeric";
+            }
+            else
+            {
+                return(true)
+            }
+        }
+        function show() {
+
+            var p1 = document.getElementById('pw').value
+            var pwexp = /^[0-9]{3,7}$/
+
+            if (!p1.match(pwexp)) {
+                document.getElementById('err').innerHTML="Numeric passwrd having length between 3 to 7";
+            }
+            else
+            {
+                document.getElementById('err').innerHTML=" ";
+                return(true)
+            }
+        }
+        
+
+        function show1() {
+            var p1 = document.getElementById('pw').value
+            var p2 = document.getElementById('pw1').value
+            if(p1!=p2)
+            {
+                document.getElementById('err').innerHTML="Both password must be same";
+            }
+            else
+            {
+                document.getElementById('err').innerHTML=" ";
+                return(true)
+            }
+        }
+
+        function con1()
+        {
+            var cexp=/[0-9]{10}/
+            var c1 = document.getElementById('con').value
+
+            if(!c1.match(cexp))
+            {
+                document.getElementById('err').innerHTML="Enter a valid mobile Number";
+            }
+            else
+            {
+                document.getElementById('err').innerHTML=" ";
+                return(true)
+            }
+        }
+        function emil_val()
+        {
+            var emxp=/^[A-Za-z0-9_!#$%&'*+\/=?`{|}~^.-]+@[A-Za-z0-9.-]+$/
+            var e1 = document.getElementById('email').value
+            if(!e1.match(emxp))
+            {
+                document.getElementById('err').innerHTML="Enter a valid Email ID";
+            }
+            else
+            {
+                document.getElementById('err').innerHTML=" ";
+                return(true)
+            }
+        }
+    </script>
+</body>
+
+</html>

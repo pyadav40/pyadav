@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watch</title>
+    <style>
+       @font-face {
+         font-family: digital;
+         src: url(./Font/digital-7.ttf);
+    }
+        *{
+            
+            margin: 0%;
+            padding: 0%;    
+        }
+        .container
+        {
+            color: #17D4FE;
+            /*font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, 'Times New Roman', Times, serif;*/
+            font-family: digital;
+            /* font-weight: bold; */
+            width:300px;
+            height: 190px;
+            background: #212121;
+            border-style:groove;
+            border-color: #17D4FE;
+            border-radius: 20px;
+            font-size: 50px;
+            /*transform: translate(40%,50%);*/
+            text-align: center;
+            /* -webkit-box-reflect: below 10px linear-gradient(transparent, rgba(255, 255, 255, 2)); */
+            box-shadow: 10px 10px 10px rgb(31, 22, 7); /* box-shadow: h-offset v-offset blur spread color*/
+            outline-width: 3px;
+            outline-style: solid;
+            outline-color: #37EA34;
+            
+        }
+
+        span{
+            margin:0px;
+            color: #17D4FE;
+        }
+        #day{
+            /*font-family: sans-serif;*/
+            font-family: digital;
+            font-size: 20px;
+        }
+    
+    </style>
+</head>
+<body onload="setInterval(distime,1000)">
+    <div class="container">
+        <span id="hrs">00</span>
+        <span>:</span>
+        <span id="min">00</span>
+        <span>:</span>
+        <span id="sec">00</span>
+        <span id="session"></span><br>
+        <span id="day"></span>
+    </div>
+    <script>
+        function distime() {
+           var date = new Date();
+
+           var days=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+          var Months=["Jan","Feb","Mar","Apr","May","Jun","Jul","Sep","Oct","Nov","Dec"];
+           document.getElementById("day").innerHTML=days[date.getDay()]+", "+date.getDate()+" "+Months[date.getMonth()-1]+" "+date.getFullYear()
+           var hrs = date.getHours();
+           var min = date.getMinutes();
+           var sec = date.getSeconds();
+           if (hrs > 12) {
+              hrs1 = hrs - 12;
+              if (hrs1 < 10) {
+                 hrs1 = "0" + hrs1
+              }
+              document.getElementById("hrs").innerHTML = hrs1;
+              document.getElementById("session").innerHTML = "PM";
+           }
+           else {
+              if (hrs < 10) {
+                 hrs = "0" + hrs
+              }
+              document.getElementById("hrs").innerHTML = hrs;
+              document.getElementById("session").innerHTML = "AM";
+           }
+           if (min < 10) {
+              min = "0" + min;
+           }
+           document.getElementById("min").innerHTML = min;
+           if (sec < 10) {
+              sec = "0" + sec;
+           }
+           document.getElementById("sec").innerHTML = sec;
+          
+        }
+     </script>
+</body>
+</html>

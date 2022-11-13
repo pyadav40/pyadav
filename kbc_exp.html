@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>kbc</title>
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+		body
+	{
+		background-image: url("https://st2.depositphotos.com/1265075/6788/i/950/depositphotos_67883405-stock-photo-quiz-sign-tags.jpg");
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+
+	.wrapper
+	{
+		position: absolute;	
+		background: #212121;
+	    top: 8%;
+	    left: 85%;
+	    transform: translateX(-20%) translateY(-50%);
+	    color: #17D4FE;
+	    font-size: 50px;
+	    font-family: Orbitron;
+	    letter-spacing: 5px;
+	}
+	.list
+	{
+		list-style: none;
+	}
+
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="timer">
+        <span id="sec">00</span>
+        <span id="session"></span>
+	</div>
+</div>
+	<div class="container">
+		<h1 id="que"></h1>
+		<ul class="list">
+			<li ><input id="r1" type="radio" name="r1"><span id="i1"></span></li>
+			<li><input id="r2" type="radio" name="r1"><span id="i2"></span></li>
+			<li><input id="r3" type="radio" name="r1"><span id="i3"></span></li>
+			<li ><input id="r4" type="radio" name="r1"><span id="i4"></span></li>
+			<li><h2 id="ans"></h2 ></li>
+		</ul>
+	 </div>
+	 <script>
+	 	
+	 var arr=[{que:"Which is the longest river in the world?",ch1:"Ganga",ch2:"The Nile",ch3:"Yangtze",ch4:"Amazon",ans:"The Nile"},{que:"Which is the largest island in the world?",ch1:"Andman",ch2:"Medagascar",ch3:"Greenland",ch4:"Ireland",ans:"Greenland"},{que:"The percentage of earth surface covered by India is?",ch1:"2.4",ch2:"3.4",ch3:"4.4",ch4:"5.8",ans:"2.4"},{que:"The India's highest annual rainfall is reported at?",ch1:"Sikkim",ch2:"Raj",ch3:"Megahlaya",ch4:"UP",ans:"Megahlaya"},{que:"The Radcliffe line is a boundary between?",ch1:"India and Pakistan",ch2:"India and China",ch3:"India and Myanmar",ch4:"India and Afghanistan", ans:"India and Pakistan"},{que:"The only state in India that produces saffron is?",ch1:"J&k",ch2:"Raj",ch3:"UK",ch4:"Kerala",ans:"J&k"}]
+	var que1= document.getElementById('que')
+	var i1=document.getElementById('i1')
+	var i2=document.getElementById('i2')
+	var i3=document.getElementById('i3')
+	var i4=document.getElementById('i4')
+	var ans=document.getElementById('ans')
+	var r1=document.getElementById('r1')
+	var r2=document.getElementById('r2')
+	var r3=document.getElementById('r3')
+	var r4=document.getElementById('r4')
+	var ans1=document.getElementById('ans')
+	var c0=0
+	function idea12(n) {
+
+		if(n==5)
+		{
+			return 0;
+		}
+		setTimeout(function()
+			{
+		que1.innerHTML=arr[n].que
+		i1.innerHTML=arr[n].ch1
+		i2.innerHTML=arr[n].ch2	
+		i3.innerHTML=arr[n].ch3;
+		i4.innerHTML=arr[n].ch4;
+		ans1.innerHTML=arr[n].ans;
+		r1.setAttribute('value',arr[n].ch1)
+		r2.setAttribute('value',arr[n].ch2)
+		r3.setAttribute('value',arr[n].ch3)
+		r4.setAttribute('value',arr[n].ch4)
+		if(r1.checked=true)
+			{
+				r1.value==ans1.innerHTML
+				c0+=1
+			}
+			else if (r2.checked=true)
+			{
+				r2.value==ans1.innerHTML
+				c0+=1
+			}
+			else if (r3.checked=true)
+			{
+				r3.value==ans1.innerHTML
+				c0+=1
+			}
+			else if(r4.checked=true)
+			{
+				r4.value==ans1.innerHTML
+				c0+=1
+			}
+
+			},n*30000);
+		n=n+1;
+		idea12(n)
+	}
+	idea12(0)
+	console.log(c0)
+// ===============================
+	dt=new Date();
+    dt.setMinutes(dt.getMinutes()+1)
+    var count_timer=dt.getTime()    	
+    var tim_count=setInterval(function()
+        {
+            var now=new Date().getTime()
+            var diff=count_timer-now;
+            var seconds = Math.ceil((diff % (1000 * 60)) / 1000);
+            console.log(seconds)
+            if(seconds>=10)
+            {
+                document.getElementById('sec').innerHTML=seconds+" Sec"
+            }
+            else {
+                document.getElementById('sec').innerHTML="0"+seconds+" Sec"
+            }
+
+            if(diff<1)
+            {
+                clearInterval(tim_count);
+                // window.location.href="Expired.html"
+    
+            }
+        },1000)
+
+	 </script>
+</body>
+</html>

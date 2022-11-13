@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Watch</title>
+   <style>
+    
+ 
+      .contaner {
+         background-color: black;
+         width: 1000px;
+         height: 1000px;
+         -webkit-box-reflect: below 1px linear-gradient(transparent, rgba(255, 255, 255, 0.5));
+      }
+
+      .tb {
+         width: 500px;
+         height: 100px;
+         text-align: center;
+         background-color: rgb(112, 116, 114);
+         border: 2px solid rgb(29, 91, 223);
+
+      }
+
+      table td {
+         border: 2px solid rgb(29, 91, 223);
+      }
+
+      table th {
+         color: rgb(208, 86, 224);
+         border: 2px solid rgb(29, 91, 223);
+      }
+   </style>
+</head>
+
+<body onload="setInterval(distime,10)">
+   <div class="container">
+      <table class="tb">
+         <tr>  
+            <th>Hours</th>
+            <th>Minutes</th>
+            <th>Seconds</th>
+            <th>Session</th>
+         </tr>
+         <tr>
+            <td id="hrs">00</td>
+            <td id="min">00</td>
+            <td id="sec">00</td>
+            <td id="session"></td>
+         </tr>
+
+         </tr>
+      </table>
+   </div>
+
+   <script>
+      function distime() {
+         var date = new Date();
+         var hrs = date.getHours();
+         var min = date.getMinutes();
+         var sec = date.getSeconds();
+         if (hrs >12) {
+            hrs1 = hrs - 12;
+            if (hrs1 < 10) {
+               hrs1 = "0" + hrs1
+            }
+            document.getElementById("hrs").innerHTML = hrs1;
+            document.getElementById("session").innerHTML = "PM";
+         }
+         else {
+            if (hrs < 10) {
+               hrs = "0" + hrs
+            }
+            document.getElementById("hrs").innerHTML = hrs;
+            document.getElementById("session").innerHTML = "AM";
+         }
+         if (min < 10) {
+            min = "0" + min;
+         }
+         document.getElementById("min").innerHTML = min;
+         if (sec < 10) {
+            sec = "0" + sec;
+         }
+         document.getElementById("sec").innerHTML = sec;
+      }
+   </script>
+</body>
+
+</html>

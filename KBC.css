@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+*
+{
+	padding: 0;
+	margin: 0;
+}
+
+body
+{
+background-image: url("https://st2.depositphotos.com/1265075/6788/i/950/depositphotos_67883405-stock-photo-quiz-sign-tags.jpg");
+background-repeat: no-repeat;
+background-size: cover;
+}
+.container
+{
+	height: 80px;
+	margin-top: 20px;
+	border-bottom: 5px solid red;;
+	font-family: sans-serif;
+
+}
+.quiz
+{
+	margin-left: 20px;
+	font-family: 'Merriweather', serif;
+	font-size: 20px;
+}
+.wrapper
+{
+	position: absolute;	
+	background: #212121;
+    top: 8%;
+    left: 85%;
+    transform: translateX(-20%) translateY(-50%);
+    color: #17D4FE;
+    font-size: 50px;
+    font-family: Orbitron;
+    letter-spacing: 5px;
+}
+label
+{
+	font-family: 'Merriweather', serif;
+	font-size: 20px;
+}
